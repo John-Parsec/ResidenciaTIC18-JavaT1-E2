@@ -53,11 +53,14 @@ Objeto
 
 > R: Em Java uma variável é declarada com a palavra reservada var. Os tipos de dados primitivos mais comuns são: int, float, double, char, boolean. Em C++ uma variável é declarada com a palavra reservada auto. Os tipos de dados primitivos mais comuns são: int, float, double, char, bool.
 
+### 3. Explique o conceito de herança em Java e como você pode criar uma subclasse a partir de uma classe existente. Faça um paralelo com C++, apresentando 5 exemplos.
+
 ### Herança em Java:
 
 >A herança em Java é um conceito fundamental na programação orientada a objetos, que permite a criação de uma classe (subclasse) que herda características e comportamentos de outra classe (superclasse). A subclasse pode então estender ou especializar a superclasse, adicionando ou modificando comportamentos.
 
 *Para criar uma subclasse em Java, você usa a palavra-chave extends. Aqui está um exemplo simples:*
+
 ```Java
 // Superclasse
 class Animal {
@@ -77,8 +80,6 @@ class Cachorro extends Animal {
     }
 }
 ```
-
-### 3. Explique o conceito de herança em Java e como você pode criar uma subclasse a partir de uma classe existente. Faça um paralelo com C++, apresentando 5 exemplos.
 
 ### Herança em C++:
 
