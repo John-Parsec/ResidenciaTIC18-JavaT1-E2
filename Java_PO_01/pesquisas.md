@@ -199,3 +199,32 @@ public:
 
 ### Estes exemplos ilustram diferentes aspectos da herança em C++, incluindo herança pública, protegida e privada, herança múltipla e o uso de construtores e destrutores em herança.
 
+### 4. Quando declaramos uma variável em Java, temos, na verdade, um ponteiro. Em C++ é diferente. Discorra sobre esse aspecto.
+
+>Não é correto afirmar que, ao declarar uma variável em Java, estamos lidando diretamente com um ponteiro. A semântica de manipulação de objetos e variáveis de referência em Java é diferente da manipulação de ponteiros em C++.
+
+>Em Java, as variáveis de referência armazenam endereços de objetos, mas os desenvolvedores não têm acesso direto ao endereço de memória como acontece em linguagens que suportam ponteiros, como C++. O gerenciamento de memória em Java é realizado pelo coletor de lixo (garbage collector), que automaticamente libera a memória de objetos não referenciados.
+
+#### Quando você declara uma variável em Java, está criando uma referência a um objeto.
+
+#### *Exemplo:*
+
+```java
+String str = new String("Hello");
+```
+
+#### Neste caso, str é uma variável de referência que aponta para um objeto String no heap, mas os detalhes de alocação de memória são tratados pelo sistema Java, e os desenvolvedores não manipulam explicitamente ponteiros.
+
+#### Em C++, ao contrário de Java, você tem controle direto sobre ponteiros. Você pode declarar ponteiros para tipos de dados e manipular a memória de forma mais direta.
+
+#### *Exemplo:*
+
+```c++
+int* ptr = new int; // Alocação dinâmica de memória
+*ptr = 42;          // Atribuição de valor através do ponteiro
+delete ptr;         // Liberação de memória
+```
+
+#### Aqui, ptr é um ponteiro que aponta para uma área de memória alocada dinamicamente para armazenar um inteiro. O programador é responsável por liberar essa memória usando delete quando não for mais necessária.
+
+#### Em resumo, enquanto Java usa referências a objetos e depende do coletor de lixo para gerenciar a memória, C++ oferece mais controle direto sobre a manipulação de ponteiros e gerenciamento de memória. Essa diferença reflete abordagens distintas na preocupação com o gerenciamento de memória e na prevenção de certos tipos de erros, como vazamentos de memória.
