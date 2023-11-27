@@ -43,6 +43,12 @@ public class Sessao {
 		this.user.novaPostagem(postagem);
 	}
 
+	public void listaPostagens() {
+		for (Postagem postagem : this.user.getListaPostagens()) {
+			System.out.println(postagem.getPost());
+		}
+	}
+
 	public Usuario getUser() {
 		return user;
 	}
