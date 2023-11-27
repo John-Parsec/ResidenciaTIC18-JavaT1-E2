@@ -83,10 +83,10 @@ public class Usuario {
 	}
 
 	public void logar() {
-		sessao.logar();
+		Sessao.logar(this);
 	}
 	
-	public void deslogar(sessao) {
+	public void deslogar() {
 		sessao.deslogar();
 	}
 }
