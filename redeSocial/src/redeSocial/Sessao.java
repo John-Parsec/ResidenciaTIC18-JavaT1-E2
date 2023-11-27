@@ -50,13 +50,9 @@ public class Sessao {
 	}
 	
     boolean solicitaAutenticacao() {
-    	for(int i = 0; i < listaUsuarios.size(); i++) {
-    		if(listaUsuarios[i].getNome().equals(this.user.getNome()) 
-    				&& listaUsuarios[i].getSenha().equals(this.user.getSenha())) {
-    			return true;
-    		}
+    	if(ListaUsuarios.containsUser(user)) {
+    		return true;
     	}
-    	
     	return false;
     }
 
