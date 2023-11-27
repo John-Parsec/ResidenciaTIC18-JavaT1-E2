@@ -54,7 +54,7 @@ public class Usuario {
         listaPostagens.add(new Postagem(postagem));
     }
     
-    public List<Postagem> listaPostagens() {
+    public List<Postagem> getListaPostagens() {
         return listaPostagens;
     }
     
