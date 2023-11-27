@@ -11,7 +11,7 @@ public class Usuario {
     private String email;
     private String senha;
     private Sessao sessao;
-    private List<String> listaPostagens;
+    private List<Postagem> listaPostagens;
     
     public Usuario(String nome, String email, String senha) {
     	this.id = id++;
@@ -45,11 +45,15 @@ public class Usuario {
         this.senha = senha;
     }    
     
-    public void novaPostagem(String postagem) {
+    public void novaPostagem(Postagem postagem) {
         listaPostagens.add(postagem);
-    }    
+    }
+
+    public void novaPostagem(String postagem) {
+        listaPostagens.add(new Postagem(postagem));
+    }
     
-    public List<String> listaPostagens() {
+    public List<Postagem> listaPostagens() {
         return listaPostagens;
     }
 
