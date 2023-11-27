@@ -12,6 +12,7 @@ public class Usuario {
     private String senha;
     private Sessao sessao;
     private List<Postagem> listaPostagens;
+    private List<Usuario> amigos;
     
     public Usuario(String nome, String email, String senha) {
     	this.id = id++;
@@ -56,7 +57,19 @@ public class Usuario {
     public List<Postagem> listaPostagens() {
         return listaPostagens;
     }
+    
+    public List<Usuario> getAmigos() {
+		return amigos;
+	}
 
+	public void adcionaAmigo(Usuario user) {
+		amigos.add(user);
+	}
+	
+	public void removeAmigo(Usuario user) {
+		amigos.remove(user);
+	} 
+    
 	public int getId() {
 		return id;
 	}
