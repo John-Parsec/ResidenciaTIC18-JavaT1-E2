@@ -23,24 +23,23 @@ public class Sessao {
     	user.setSessao(null);
     }
 
-	public criarAmizade(Usuario amigo2) {
-		if (!this.user.amigos.contains(amigo2)) {
+	public void criarAmizade(Usuario amigo2) {
+		if (!this.user.getAmigos().contains(amigo2)) {
             this.user.adcionaAmigo(amigo2); // Adiciona o usuário atual à lista de amigos do amigo
-            amigo2.amigos.adcionaAmigo(this); // Adiciona o usuário atual à lista de amigos do amigo
+            amigo2.adcionaAmigo(this.user); // Adiciona o usuário atual à lista de amigos do amigo
         }
 	}
 
-	public desfazerAmizade(Usuario amigo2) {
-		if (this.user.amigos.contains(amigo2)) {
+	public void desfazerAmizade(Usuario amigo2) {
+		if (this.user.getAmigos().contains(amigo2)) {
 			this.user.removeAmigo(amigo2); // Remove o usuário atual da lista de amigos do amigo
-			amigo2.amigos.removeAmigo(this); // Remove o usuário atual da lista de amigos do amigo
+			amigo2.removeAmigo(this.user); // Remove o usuário atual da lista de amigos do amigo
 		}
 	}
 
-	public criarPostagem(String post){
-		Postagem postagem = new Postagem();
+	public void criarPostagem(String post){
+		Postagem postagem = new Postagem(post);
 		postagem.setDataPostagem(new Date());
-		postagem.setPost(this.user.getNome() + " postou: " + post);
 		this.user.novaPostagem(postagem);
 	}
 
