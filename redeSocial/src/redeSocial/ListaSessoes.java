@@ -1,17 +1,17 @@
 package redeSocial;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class ListaSessoes {
-    private List<Sessao> listaSessao = new ArrayList<>();
+    private ArrayList<Sessao> listaSessao = new ArrayList<>();
 
     public void addSessao(Sessao sessao) {
         listaSessao.add(sessao);
     }
-    public removeSessao(Sessao sessao) {
+    public void removeSessao(Sessao sessao) {
         listaSessao.remove(sessao);
     }
-    public List<Sessao> getListaSessao() {
+    public ArrayList<Sessao> getListaSessao() {
         return listaSessao;
     }
 
