@@ -78,6 +78,10 @@ public class Usuario {
 		this.id = id;
 	}
 	
+	public void setSessao(Sessao sessao) {
+		this.sessao = sessao;
+	}
+
 	public void logar() {
 		sessao.logar();
 	}
