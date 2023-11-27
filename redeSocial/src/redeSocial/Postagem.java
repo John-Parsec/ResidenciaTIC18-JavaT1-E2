@@ -50,7 +50,7 @@ public class Postagem {
 		}
     }
 
-    public String toString() {
+    public String dataPostagemToString() {
     	return formato.format(dataPostagem);
     }
 }
