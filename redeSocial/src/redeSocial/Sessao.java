@@ -18,7 +18,7 @@ public class Sessao {
         user.setSessao(sessao);
     }
     
-    void deslogar() {
+    public void deslogar() {
     	this.dataHoraFim = new Date();
     	user.setSessao(null);
     }
@@ -48,6 +48,17 @@ public class Sessao {
 			System.out.println(postagem.getPost());
 		}
 	}
+	
+    boolean solicitaAutenticacao() {
+    	for(int i = 0; i < listaUsuarios.size(); i++) {
+    		if(listaUsuarios[i].getNome().equals(this.user.getNome()) 
+    				&& listaUsuarios[i].getSenha().equals(this.user.getSenha())) {
+    			return true;
+    		}
+    	}
+    	
+    	return false;
+    }
 
 	public Usuario getUser() {
 		return user;
