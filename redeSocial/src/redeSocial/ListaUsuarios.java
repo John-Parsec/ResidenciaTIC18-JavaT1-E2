@@ -1,25 +1,23 @@
 package redeSocial;
 
-public class ListaUsuarios {
-    private List<Usuario> lista = new ArrayList<>();
+import java.util.ArrayList;
 
-    public void add(Usuario user) {
+public class ListaUsuarios {
+    private ArrayList<Usuario> lista = new ArrayList<Usuario>();
+
+    public void criarUsuario(Usuario user) {
         lista.add(user);
     }
-
-    public void remove(Usuario user) {
+    
+    public void removerUsuario(Usuario user) {
         lista.remove(user);
     }
 
-    public List<Usuario> getLista() {
+    public ArrayList<Usuario> getUsers() {
         return lista;
     }
 
-    public findUser(Usuario user){
-        if(!lista.contains(user)){
-            return false;
-        } else {
-            return true;
-        }
+    public boolean containsUser(Usuario user){
+        return lista.contains(user);
     }
 }

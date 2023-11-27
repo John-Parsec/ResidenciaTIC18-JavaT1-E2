@@ -2,8 +2,6 @@ package redeSocial;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.text.SimpleDateFormat;  
-import java.util.Date;
 
 public class Usuario {
 	private int id;
