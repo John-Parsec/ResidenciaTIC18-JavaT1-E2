@@ -22,7 +22,7 @@ public class Coelho {
             System.out.println("2. Menu de Imóveis");
             System.out.println("3. Menu de Faturas");
             System.out.println("4. Menu de Pagamentos");
-            System.out.println("5. Menu de Falhas");
+            System.out.println("5. Incluir Falhas");
             System.out.println("0. Sair do Menu");
             System.out.println("===========================================");
             System.out.print("Escolha uma opção: ");
@@ -44,7 +44,7 @@ public class Coelho {
                     menuPagamentos();
                     break;
                 case 5:
-                     menuFalhas();
+                	incluirFalha();
                     break;
                 case 0:
                     System.out.println("Saindo do menu de gerenciamento de imóveis. Até mais!");
@@ -422,31 +422,6 @@ public class Coelho {
         return null;
     }
 
-    public void menuFalhas () {
-    	 System.out.println("\n===== Menu de Gerenciamento de Falha =====");
-         System.out.println("1. Incluir Falha");
-         System.out.println("2. Finalizar Falha");
-         System.out.println("0. Sair do Menu");
-         
-         int opcao = scanner.nextInt();
-         scanner.nextLine(); // Consumir a quebra de linha
-         
-         switch (opcao) {
-         case 1:
-             incluirFalha();
-             break;
-         case 2:
-             finalizarFalha();
-             break;
-         case 0:
-             System.out.println("Saindo do menu de gerenciamento de imóveis. Até mais!");
-             System.exit(0);
-             break;
-         default:
-             System.out.println("Opção inválida. Tente novamente.");
-     }
-    }
-    
     private void incluirFalha(){
         System.out.println("\n===== Criar Nova Falha =====");
         System.out.print("A Falha é de um imóvel? (S/N) ");
@@ -520,11 +495,7 @@ public class Coelho {
             }
         }       
     }
-    
-    private void finalizarFalha(){
-        System.out.println("\n===== Criar Nova Falha =====");
-        System.out.print("Qual falha vc deseja finalizar? ");
-    }
+
 
     public void menuReparos() {
         while (true) {
