@@ -4,9 +4,9 @@ public class Reembolso {
     private double valor;
     private Date data;
 
-    public Reembolso(double valor, Date data) {
+    public Reembolso(double valor) {
         this.valor = valor;
-        this.data = data;
+        this.data = new Date();
     }
 
     public double getValor() {
