@@ -61,4 +61,19 @@ public class Fatura {
 		return (this.ultimaLeitura - this.penultimaLeitura) * 10;
 	}
 	
+	public void adicionaPagamento(Pagamento pagamento){
+		if(this.quitado){
+			System.out.println("A fatura já está quitada!");
+			return;
+		}
+
+		if(pagamento.getValor() >= this.calculaValor()){
+			this.quitado = true;
+			if(pagamento.getValor() > this.calculaValor()){
+				Reembolso reembolso = new Reembolso(pagamento.getValor() - this.calculaValor());
+				pagamento.setReembolso(reembolso);
+				System.out.printf("Reembolso feito de R$%.2f%n", pagamento.getReembolso().getValor());
+			}
+		}
+	}
 }
