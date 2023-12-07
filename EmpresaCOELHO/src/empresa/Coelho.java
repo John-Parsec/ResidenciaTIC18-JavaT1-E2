@@ -603,6 +603,15 @@ public class Coelho {
 		System.out.println("\n===== Criar um Novo Pagamento =====");
 		System.out.print("Digite o a matricula do imovel: ");
 		String matricula = sc.nextLine();
+		
+		Imovel imovelEncontrado = consultarImovelPorMatricula(matricula);
+		
+		if (imovelEncontrado ==  null) {
+			System.out.println("Imve não encontrado");
+			sc.close();
+			return;
+		}
+		
         System.out.println("Digite o CPF do cliente:");
         String cpf = sc.nextLine();
 		System.out.print("Digite o valor a ser pago: ");
