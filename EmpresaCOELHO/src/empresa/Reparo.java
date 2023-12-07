@@ -46,10 +46,11 @@ public class Reparo {
 		super();
 		this.descricao = descricao;
 		this.previsao = previsao;
-		this.dataInicio = null;
+		this.dataInicio = LocalDate.now();
 		this.dataFim = null;
 		this.resolveu = false;
 	}
+	
 	
 	
 }
