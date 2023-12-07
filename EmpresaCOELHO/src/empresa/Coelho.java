@@ -10,6 +10,6 @@ public class Coelho {
     ArrayList<Pagamento> pagamentos = new ArrayList<Pagamento>();
 
     public static void main(String[] args) {
-            
+    	
     }
 }
