@@ -1,9 +1,6 @@
-package cliente;
+package empresa;
 
 import java.util.List;
-
-import empresa.Imovel;
-
 import java.util.ArrayList;
 
 

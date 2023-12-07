@@ -1,4 +1,4 @@
-package cliente;
+package empresa;
 import java.util.ArrayList;
 
 public class ListaClientes {

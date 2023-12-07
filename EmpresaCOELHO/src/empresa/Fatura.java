@@ -57,7 +57,7 @@ public class Fatura {
 		this.quitado = quitado;
 	}
 	
-	private float calculaValor() {
+	public float calculaValor() {
 		return (this.ultimaLeitura - this.penultimaLeitura) * 10;
 	}
 	

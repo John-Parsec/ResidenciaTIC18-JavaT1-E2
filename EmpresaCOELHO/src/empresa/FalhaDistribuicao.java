@@ -19,7 +19,7 @@ public class FalhaDistribuicao extends Falha{
 	}
 
 	public void addReparos(Reparo reparo) {
-		this.reparos.add(reparos);
+		this.reparos.add(reparo);
 	}
 	
 }
