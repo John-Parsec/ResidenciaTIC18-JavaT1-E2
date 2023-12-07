@@ -50,7 +50,4 @@ public class Reparo {
 		this.dataFim = null;
 		this.resolveu = false;
 	}
-	
-	
-	
 }

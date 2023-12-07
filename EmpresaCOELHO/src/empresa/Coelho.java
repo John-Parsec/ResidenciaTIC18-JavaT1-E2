@@ -178,8 +178,10 @@ public class Coelho {
 			System.out.println("===========================================");
 			System.out.print("Escolha uma opção: ");
 			
-
-			switch (sc.nextInt()) {
+			int opcao = scanner.nextInt();
+            scanner.nextLine(); // Consumir a quebra de linha
+            
+			switch (opcao) {
 			case 1:
 				adcionarFatura();
 				break;
@@ -641,8 +643,10 @@ public class Coelho {
 			System.out.println("===========================================");
 			System.out.print("Escolha uma opção: ");
 			
-
-			switch (sc.nextInt()) {
+			int opcao = scanner.nextInt();
+            scanner.nextLine(); // Consumir a quebra de linha
+            
+			switch (opcao) {
 			case 1:
 				adcionarPagamento();
 				break;
