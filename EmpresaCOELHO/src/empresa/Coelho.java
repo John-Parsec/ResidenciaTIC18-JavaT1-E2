@@ -1,5 +1,6 @@
 package empresa;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -422,16 +423,116 @@ public class Coelho {
         return null;
     }
 
-    // Imovel
+    public void menuFalhas () {
+    	 System.out.println("\n===== Menu de Gerenciamento de Falha =====");
+         System.out.println("1. Incluir Falha");
+         System.out.println("2. Finalizar Falha");
+         System.out.println("0. Sair do Menu");
+         
+         int opcao = scanner.nextInt();
+         scanner.nextLine(); // Consumir a quebra de linha
+         
+         switch (opcao) {
+         case 1:
+             incluirFalha();
+             break;
+         case 2:
+             finalizarFalha();
+             break;
+         case 0:
+             System.out.println("Saindo do menu de gerenciamento de imóveis. Até mais!");
+             System.exit(0);
+             break;
+         default:
+             System.out.println("Opção inválida. Tente novamente.");
+     }
+    }
+    
+    private void incluirFalha(){
+        System.out.println("\n===== Criar Nova Falha =====");
+        System.out.print("A Falha é de um imóvel? (S/N) ");
+        String opcaoImovel = scanner.nextLine();
+        
+        if(opcaoImovel.equals("S") || opcaoImovel.equals("s")) {
+        	System.out.print("Qual a matrícula do imóvel? ");
+            String matricula = scanner.nextLine();
+            
+            System.out.print("Qual a data de previsão? ");
+            LocalDate previsao = LocalDate.now().plusWeeks(1);            
+            System.out.print("Qual o tipo de falha?");
+            System.out.print("1. Falha de geração");
+            System.out.print("2. Falha de distribuição");
+            int opcaoFalha = scanner.nextInt();
+            
+            if(opcaoFalha == 1) {
+            	FalhaGeracao falha = new FalhaGeracao(matricula, previsao);
+            	falhas.add(falha);
+            } else if (opcaoFalha == 2) {
+            	FalhaDistribuicao falha = new FalhaDistribuicao(matricula, previsao);
+            	falhas.add(falha);
+            	
+            	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            	
+                System.out.println("\n===== Criar Novo Reparo =====");
+                System.out.print("Digite a descrição do Repare: ");
+                String descricao = scanner.nextLine();
+                System.out.print("Digite a data da Previsão (dd/mm/yyyy): "); 
+                LocalDate dataPrevisao = LocalDate.parse(scanner.nextLine(), formatter);
 
-    // Reparo
+                Reparo novoReparo = new Reparo(descricao, dataPrevisao);
+                lista_reparos.criaReparo(novoReparo);
+                falha.addReparos(novoReparo);
+                System.out.println("Reparo criado com sucesso!");
+            } else {
+            	System.out.print("Opção inválida!");
+            }
+        } else {
+        	System.out.print("Qual a data de previsão? ");
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            String data = scanner.nextLine();
+            LocalDate previsao = LocalDate.parse(data, formato);
+        	
+        	System.out.print("Qual o tipo de falha?");
+            System.out.print("1. Falha de geração");
+            System.out.print("2. Falha de distribuição");
+            int opcaoFalha = scanner.nextInt();
+            
+            if(opcaoFalha == 1) {
+            	FalhaGeracao falha = new FalhaGeracao(previsao);
+            	falhas.add(falha);
+            } else if (opcaoFalha == 2) {
+            	FalhaDistribuicao falha = new FalhaDistribuicao();
+            	falhas.add(falha);
+            	
+            	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            	
+                System.out.println("\n===== Criar Novo Reparo =====");
+                System.out.print("Digite a descrição do Repare: ");
+                String descricao = scanner.nextLine();
+                System.out.print("Digite a data da Previsão (dd/mm/yyyy): "); 
+                LocalDate dataPrevisao = LocalDate.parse(scanner.nextLine(), formatter);
+
+                Reparo novoReparo = new Reparo(descricao, dataPrevisao);
+                lista_reparos.criaReparo(novoReparo);
+                falha.addReparos(novoReparo);
+                System.out.println("Reparo criado com sucesso!");
+            } else {
+            	System.out.print("Opção inválida!");
+            }
+        }       
+    }
+    
+    private void finalizarFalha(){
+        System.out.println("\n===== Criar Nova Falha =====");
+        System.out.print("Qual falha vc deseja finalizar? ");
+    }
 
     public void menuReparos() {
         while (true) {
-            System.out.println("\n===== Menu de Gerenciamento de Roparo =====");
+            System.out.println("\n===== Menu de Gerenciamento de Reparo =====");
             System.out.println("1. Criar Reparo");
             System.out.println("2. Consultar Reparo");
-            System.out.println("3. Listar Roparo");
+            System.out.println("3. Listar Reparo");
             System.out.println("4. Alterar Reparo");
             System.out.println("5. Remover Reparo");
             System.out.println("6. Resolver Reparo");
@@ -456,7 +557,7 @@ public class Coelho {
                     alterarReparo();
                     break;
                 case 5:
-                    removerRoparo();
+                    removerReparo();
                     break;
                 case 6:
                 	ResolverReparo();
@@ -525,7 +626,7 @@ public class Coelho {
         }
     }
 
-    private void removerRoparo(){
+    private void removerReparo(){
         System.out.println("\n===== Remover Reparo =====");
         System.out.print("Digite a descrição: ");
         String descricao = scanner.nextLine();
@@ -548,9 +649,9 @@ public class Coelho {
         Reparo reparoParaRemover = lista_reparos.consultarReparoPorDescricao(descricao);
         if (reparoParaRemover != null) {
             lista_reparos.ResolveReparo(reparoParaRemover);
-            System.out.println("Roparo removido com sucesso!");
+            System.out.println("Reparo removido com sucesso!");
         } else {
-            System.out.println("Roparo não encontrado.");
+            System.out.println("Reparo não encontrado.");
         }
     }
 
@@ -629,6 +730,4 @@ public class Coelho {
 			}
 		}
 	}
-
-    // Pagamento
 }
