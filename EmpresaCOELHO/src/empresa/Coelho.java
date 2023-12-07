@@ -1,13 +1,15 @@
-package coelho;
+package empresa;
+
+import java.util.ArrayList;
 
 public class Coelho {
-    arrayList<Cliente> clientes = new arrayList<Cliente>();
-    arrayList<Fatura> faturas = new arrayList<Fatura>();
-    arrayList<Imovel> imoveis = new arrayList<Imovel>();
-    arrayList<Falha> falhas = new arrayList<Falha>();
-    arrayList<Pagamento> pagamentos = new arrayList<Pagamento>();
+    ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+    ArrayList<Fatura> faturas = new ArrayList<Fatura>();
+    ArrayList<Imovel> imoveis = new ArrayList<Imovel>();
+    ArrayList<Falha> falhas = new ArrayList<Falha>();
+    ArrayList<Pagamento> pagamentos = new ArrayList<Pagamento>();
 
-    public statis main(String[] args) {
+    public static void main(String[] args) {
             
     }
 }
