@@ -1,4 +1,4 @@
-package imovel;
+package empresa;
 
 import java.util.ArrayList;
 

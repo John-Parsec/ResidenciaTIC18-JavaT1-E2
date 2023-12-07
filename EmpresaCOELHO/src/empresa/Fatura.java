@@ -1,4 +1,4 @@
-package fatura;
+package empresa;
 
 import java.time.LocalDateTime;
 
