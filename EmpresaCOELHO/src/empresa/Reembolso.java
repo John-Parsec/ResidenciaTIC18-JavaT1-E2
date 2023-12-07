@@ -1,3 +1,5 @@
+import java.util.Date;
+
 public class Reembolso {
     private double valor;
     private Date data;
