@@ -59,9 +59,13 @@ public class Imovel {
 	public ArrayList<Falha> getFalhas() {
 		return falhas;
 	}
-	
+
 	public void setFalhas(ArrayList<Falha> falhas) {
 		this.falhas = falhas;
+	}
+	
+	public void addFalha(Falha falha) {
+		this.falhas.add(falha);
 	}
 	
 	public void realizarLeitura(int leituraAtual) {
