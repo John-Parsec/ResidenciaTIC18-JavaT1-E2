@@ -1,6 +1,5 @@
 package empresa;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ public class Coelho {
 
     public void main(String[] args) {
         while(true){
-            System.out.println("\n===== Menu de Gerenciamento de Imóveis =====");
+            System.out.println("\n===== Menu =====");
             System.out.println("1. Menu de Clientes");
             System.out.println("2. Menu de Imóveis");
             System.out.println("3. Menu de Faturas");
@@ -45,7 +44,7 @@ public class Coelho {
                     menuPagamentos();
                     break;
                 case 5:
-                    // menufalhas();
+                     menuFalhas();
                     break;
                 case 0:
                     System.out.println("Saindo do menu de gerenciamento de imóveis. Até mais!");
