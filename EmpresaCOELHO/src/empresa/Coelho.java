@@ -1,5 +1,7 @@
 package empresa;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,6 +11,8 @@ public class Coelho {
     ArrayList<Imovel> imoveis = new ArrayList<Imovel>();
     ArrayList<Falha> falhas = new ArrayList<Falha>();
     ArrayList<Pagamento> pagamentos = new ArrayList<Pagamento>();
+    ListaClientes listaClientes = new ListaClientes();
+    ListaReparos lista_reparos = new ListaReparos();
     private static Scanner scanner = new Scanner(System.in);
 
     public void main(String[] args) {
@@ -31,16 +35,16 @@ public class Coelho {
                     menuClientes();
                     break;
                 case 2:
-                    menuFaturas();
+                    menuImoveis();
                     break;
                 case 3:
-                    //MenuGerenciarFaturas.main(args);
+                    menuFaturas();
                     break;
                 case 4:
-                    //MenuGerenciarPagamentos.main(args);
+                    menuPagamentos();
                     break;
                 case 5:
-                    //MenuGerenciarFalhas.main(args);
+                    // menufalhas();
                     break;
                 case 0:
                     System.out.println("Saindo do menu de gerenciamento de imóveis. Até mais!");
@@ -54,9 +58,17 @@ public class Coelho {
 
     // Cliente
 
-    public static void menuClientes() {
+    public void menuClientes() {
         while (true) {
-            exibirMenu();
+            System.out.println("\n===== Menu de Gerenciamento de Clientes =====");
+            System.out.println("1. Criar Cliente");
+            System.out.println("2. Consultar Cliente");
+            System.out.println("3. Listar Clientes");
+            System.out.println("4. Alterar Cliente");
+            System.out.println("5. Remover Cliente");
+            System.out.println("0. Sair do Menu");
+            System.out.println("============================================");
+            System.out.print("Escolha uma opção: ");
 
             int opcao = scanner.nextInt();
             scanner.nextLine(); // Consumir a quebra de linha
@@ -87,19 +99,7 @@ public class Coelho {
         }
     }
 
-    private static void exibirMenu() {
-        System.out.println("\n===== Menu de Gerenciamento de Clientes =====");
-        System.out.println("1. Criar Cliente");
-        System.out.println("2. Consultar Cliente");
-        System.out.println("3. Listar Clientes");
-        System.out.println("4. Alterar Cliente");
-        System.out.println("5. Remover Cliente");
-        System.out.println("0. Sair do Menu");
-        System.out.println("============================================");
-        System.out.print("Escolha uma opção: ");
-    }
-
-    private static void criarCliente() {
+    private void criarCliente() {
         System.out.println("\n===== Criar Novo Cliente =====");
         System.out.print("Digite o CPF do cliente: ");
         String cpf = scanner.nextLine();
@@ -112,7 +112,7 @@ public class Coelho {
         System.out.println("Cliente criado com sucesso!");
     }
 
-    private static void consultarCliente() {
+    private void consultarCliente() {
         System.out.println("\n===== Consultar Cliente =====");
         System.out.print("Digite o CPF do cliente: ");
         String cpf = scanner.nextLine();
@@ -128,12 +128,12 @@ public class Coelho {
         }
     }
 
-    private static void listarClientes() {
+    private void listarClientes() {
         System.out.println("\n===== Listagem de Clientes =====");
         listaClientes.listarClientes();
     }
 
-    private static void alterarCliente() {
+    private void alterarCliente() {
         System.out.println("\n===== Alterar Cliente =====");
         System.out.print("Digite o CPF do cliente a ser alterado: ");
         String cpf = scanner.nextLine();
@@ -147,7 +147,7 @@ public class Coelho {
         }
     }
 
-    private static void removerCliente() {
+    private void removerCliente() {
         System.out.println("\n===== Remover Cliente =====");
         System.out.print("Digite o CPF do cliente a ser removido: ");
         String cpf = scanner.nextLine();
@@ -240,4 +240,395 @@ public class Coelho {
 			}
 		}
 	}
+
+    // Fatura
+
+    // Imovel
+
+     public void menuImoveis() {
+        while (true) {
+            System.out.println("\n===== Menu de Gerenciamento de Imóveis =====");
+            System.out.println("1. Criar Imóvel");
+            System.out.println("2. Consultar Imóvel");
+            System.out.println("3. Listar Imóveis");
+            System.out.println("4. Alterar Imóvel");
+            System.out.println("5. Remover Imóvel");
+            System.out.println("6. Realizar Leitura");
+            System.out.println("7. Vincular Falha");
+            System.out.println("0. Sair do Menu");
+            System.out.println("===========================================");
+            System.out.print("Escolha uma opção: ");
+
+            int opcao = scanner.nextInt();
+            scanner.nextLine(); // Consumir a quebra de linha
+
+            switch (opcao) {
+                case 1:
+                    criarImovel();
+                    break;
+                case 2:
+                    consultarImovel();
+                    break;
+                case 3:
+                    listarImoveis();
+                    break;
+                case 4:
+                    alterarImovel();
+                    break;
+                case 5:
+                    removerImovel();
+                    break;
+                case 6:
+                    realizarLeitura();
+                    break;
+                case 7:
+                    vincularFalha();
+                    break;
+                case 0:
+                    System.out.println("Saindo do menu de gerenciamento de imóveis. Até mais!");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+            }
+        }
+    }
+
+    private void criarImovel() {
+        System.out.println("\n===== Criar Novo Imóvel =====");
+        System.out.print("Digite a matrícula do imóvel: ");
+        String matricula = scanner.nextLine();
+        System.out.print("Digite o endereço do imóvel: ");
+        String endereco = scanner.nextLine();
+
+        Imovel novoImovel = new Imovel(matricula, endereco);
+        imoveis.add(novoImovel);
+
+        System.out.println("Imóvel criado com sucesso!");
+    }
+
+    private void consultarImovel() {
+        System.out.println("\n===== Consultar Imóvel =====");
+        System.out.print("Digite a matrícula do imóvel: ");
+        String matricula = scanner.nextLine();
+
+        Imovel imovelEncontrado = consultarImovelPorMatricula(matricula);
+
+        if (imovelEncontrado != null) {
+            System.out.println("Imóvel encontrado:");
+            System.out.println("Matrícula: " + imovelEncontrado.getMatricula());
+            System.out.println("Endereço: " + imovelEncontrado.getEndereço());
+        } else {
+            System.out.println("Imóvel não encontrado.");
+        }
+    }
+
+    private void listarImoveis() {
+        System.out.println("\n===== Listagem de Imóveis =====");
+        for (Imovel imovel : imoveis) {
+            System.out.println("Matrícula: " + imovel.getMatricula());
+            System.out.println("Endereço: " + imovel.getEndereço());
+            System.out.println("------------------------------");
+        }
+    }
+
+    private void alterarImovel() {
+        System.out.println("\n===== Alterar Imóvel =====");
+        System.out.print("Digite a matrícula do imóvel a ser alterado: ");
+        String matricula = scanner.nextLine();
+        System.out.print("Digite o novo endereço: ");
+        String novoEndereco = scanner.nextLine();
+
+        Imovel imovelParaAlterar = consultarImovelPorMatricula(matricula);
+
+        if (imovelParaAlterar != null) {
+            imovelParaAlterar.setEndereço(novoEndereco);
+            System.out.println("Endereço do imóvel alterado com sucesso!");
+        } else {
+            System.out.println("Imóvel não encontrado.");
+        }
+    }
+
+    private void removerImovel() {
+        System.out.println("\n===== Remover Imóvel =====");
+        System.out.print("Digite a matrícula do imóvel a ser removido: ");
+        String matricula = scanner.nextLine();
+
+        Imovel imovelParaRemover = consultarImovelPorMatricula(matricula);
+
+        if (imovelParaRemover != null) {
+            imoveis.remove(imovelParaRemover);
+            System.out.println("Imóvel removido com sucesso!");
+        } else {
+            System.out.println("Imóvel não encontrado.");
+        }
+    }
+
+    private void realizarLeitura() {
+        System.out.println("\n===== Realizar Leitura =====");
+        System.out.print("Digite a matrícula do imóvel: ");
+        String matricula = scanner.nextLine();
+        System.out.print("Digite a leitura atual do relógio: ");
+        int leituraAtual = scanner.nextInt();
+
+        Imovel imovel = consultarImovelPorMatricula(matricula);
+
+        if (imovel != null) {
+            imovel.realizarLeitura(leituraAtual);
+            System.out.println("Leitura realizada com sucesso!");
+        } else {
+            System.out.println("Imóvel não encontrado.");
+        }
+    }
+
+    private void vincularFalha() {
+        System.out.println("\n===== Vincular Falha =====");
+        System.out.print("Digite a matrícula do imóvel: ");
+        String matricula = scanner.nextLine();
+        System.out.print("Digite o tipo da falha: ");
+        String tipoFalha = scanner.nextLine().toLowerCase();
+        System.out.print("Digite a descrição da falha: ");
+        String descricaoFalha = scanner.nextLine();
+
+        Imovel imovel = consultarImovelPorMatricula(matricula);
+
+        LocalDate dataAtual = LocalDate.now();
+        LocalDate dataFutura = dataAtual.plusWeeks(1);
+
+        if (imovel != null) {
+            if (tipoFalha == "distribuição"){
+                FalhaDistribuicao FalhaDistribuicao = new FalhaDistribuicao(matricula, dataFutura);
+                imovel.vincularFalha(FalhaDistribuicao);
+                FalhaDistribuicao.setDescricao(descricaoFalha);
+                System.out.println("Falha vinculada com sucesso!");
+            } else if (tipoFalha == "geração"){
+                FalhaGeracao FalhaGeracao = new FalhaGeracao(matricula, dataFutura);
+                imovel.vincularFalha(FalhaGeracao);
+                FalhaGeracao.setDescricao(descricaoFalha);
+                System.out.println("Falha vinculada com sucesso!");
+            }
+
+        } else {
+            System.out.println("Imóvel não encontrado.");
+        }
+    }
+
+    private Imovel consultarImovelPorMatricula(String matricula) {
+        for (Imovel imovel : imoveis) {
+            if (imovel.getMatricula().equalsIgnoreCase(matricula)) {
+                return imovel;
+            }
+        }
+        return null;
+    }
+
+    // Imovel
+
+    // Reparo
+
+    public void menuReparos() {
+        while (true) {
+            System.out.println("\n===== Menu de Gerenciamento de Roparo =====");
+            System.out.println("1. Criar Reparo");
+            System.out.println("2. Consultar Reparo");
+            System.out.println("3. Listar Roparo");
+            System.out.println("4. Alterar Reparo");
+            System.out.println("5. Remover Reparo");
+            System.out.println("6. Resolver Reparo");
+            System.out.println("0. Sair do Menu");
+            System.out.println("============================================");
+            System.out.print("Escolha uma opção: ");
+
+            int opcao = scanner.nextInt();
+            scanner.nextLine(); // Consumir a quebra de linha
+
+            switch (opcao) {
+                case 1:
+                    criarReparo();
+                    break;
+                case 2:
+                    consultarReparo();
+                    break;
+                case 3:
+                    listarReparo();
+                    break;
+                case 4:
+                    alterarReparo();
+                    break;
+                case 5:
+                    removerRoparo();
+                    break;
+                case 6:
+                	ResolverReparo();
+                    break;
+                case 0:
+                    System.out.println("Saindo do menu de gerenciamento de Roparo. Até mais!");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+            }
+        }
+    }
+
+    private void criarReparo(){
+    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    	
+        System.out.println("\n===== Criar Novo Reparo =====");
+        System.out.print("Digite a descrição do Repare: ");
+        String descricao = scanner.nextLine();
+        System.out.print("Digite a data da Previsão (dd/mm/yyyy): "); 
+        LocalDate dataPrevisao = LocalDate.parse(scanner.nextLine(), formatter);
+
+        Reparo novoReparo = new Reparo(descricao, dataPrevisao);
+        lista_reparos.criaReparo(novoReparo);
+        System.out.println("Reparo criado com sucesso!");
+    }
+
+    private void consultarReparo() {
+        System.out.println("\n===== Consultar Reparo =====");
+        System.out.print("Digite a descrição: ");
+        String descricao = scanner.nextLine();
+
+        Reparo reparoPorDescricao = lista_reparos.consultarReparoPorDescricao(descricao);
+        
+        if (reparoPorDescricao != null) {
+            System.out.println("Descrição: " + reparoPorDescricao.getDescricao() +
+            ", Previsão: " + reparoPorDescricao.getPrevisao() +
+            ", Resolvido: " + reparoPorDescricao.isResolveu());
+
+        } else {
+            System.out.println("lista_reparos não encontrado.");
+        }
+    }
+
+    private void listarReparo() {
+        System.out.println("\n===== Listagem de Reparo =====");
+        lista_reparos.listarReparos();
+    }
+
+    private void alterarReparo() {
+    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    	
+        System.out.println("\n===== Criar Novo Reparo =====");
+        System.out.print("Digite a nova descrição do Repare: ");
+        String descricao = scanner.nextLine();
+        System.out.print("Digite a nova descrição do Repare: ");
+        String nova_descricao = scanner.nextLine();
+        System.out.print("Digite a nova data da Previsão (dd/mm/yyyy): "); 
+        LocalDate nova_previsao = LocalDate.parse(scanner.nextLine(), formatter);
+
+        if (lista_reparos.alterarReparo(descricao, nova_previsao, nova_descricao)) {
+            System.out.println("Nome do Reparo alterado com sucesso!");
+        } else {
+            System.out.println("Reparo não encontrado.");
+        }
+    }
+
+    private void removerRoparo(){
+        System.out.println("\n===== Remover Reparo =====");
+        System.out.print("Digite a descrição: ");
+        String descricao = scanner.nextLine();
+
+        Reparo reparoParaRemover = lista_reparos.consultarReparoPorDescricao(descricao);
+        
+        if (reparoParaRemover != null) {
+            lista_reparos.removerReparo(reparoParaRemover);
+            System.out.println("Roparo removido com sucesso!");
+        } else {
+            System.out.println("Roparo não encontrado.");
+        }
+    }
+    
+    private void ResolverReparo() {
+        System.out.println("\n===== Resolver Reparo =====");
+        System.out.print("Digite a descrição: ");
+        String descricao = scanner.nextLine();
+
+        Reparo reparoParaRemover = lista_reparos.consultarReparoPorDescricao(descricao);
+        if (reparoParaRemover != null) {
+            lista_reparos.ResolveReparo(reparoParaRemover);
+            System.out.println("Roparo removido com sucesso!");
+        } else {
+            System.out.println("Roparo não encontrado.");
+        }
+    }
+
+    // Reparo
+
+    // Pagamento
+
+    public void menuPagamentos() {
+		Scanner sc = new Scanner(System.in);
+		
+		while(true){
+			System.out.println("\n===== Menu de Pagamentos =====");
+			System.out.println("1. Criar um novo Pagamento");
+			System.out.println("2. Listar Todos os Pagamentos");
+			System.out.println("3. Listar Pagamentos Em Aberto");
+			System.out.println("0. Sair do Menu");
+			System.out.println("===========================================");
+			System.out.print("Escolha uma opção: ");
+			
+
+			switch (sc.nextInt()) {
+			case 1:
+				adcionarPagamento();
+				break;
+			case 2:
+				listarPagamento();
+				break;
+			case 3:
+				listarPagamentoEmAberto();
+				break;
+			case 0:
+                sc.close();
+				System.out.println("Saindo do Menu de Pagamentos...");
+				return;
+			}
+		}
+	}
+
+	public ArrayList<Pagamento> getPagamentos() {
+		return pagamentos;
+	}
+
+	public void addPagamento(Pagamento pagamento) {
+		this.pagamentos.add(pagamento);
+	}
+
+	private void adcionarPagamento() {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("\n===== Criar um Novo Pagamento =====");
+		System.out.print("Digite o a matricula do imovel: ");
+		String matricula = sc.nextLine();
+        System.out.println("Digite o CPF do cliente:");
+        String cpf = sc.nextLine();
+		System.out.print("Digite o valor a ser pago: ");
+		float valor = sc.nextFloat();
+		
+		Pagamento pagamento = new Pagamento(valor, cpf, matricula);
+		
+		this.pagamentos.add(pagamento);
+        sc.close();
+	}
+
+	private void listarPagamento() {
+		System.out.println("\n===== Listar Todos os Pagamentos =====");
+		for (Pagamento pagamento : this.pagamentos) {
+			System.out.println(pagamento);
+		}
+	}
+
+	private void listarPagamentoEmAberto() {
+		System.out.println("\n===== Listar Pagamentos Em Aberto =====");
+		for (Fatura fatura : this.faturas) {
+			if(!fatura.isQuitado()){
+				System.out.println(fatura.pagamento);
+			}
+		}
+	}
+
+    // Pagamento
 }

@@ -8,6 +8,7 @@ public class Fatura {
 	private int penultimaLeitura;
 	private float valor;
 	private boolean quitado;
+	Pagamento pagamento;
 	
 	public Fatura(int ultimaLeitura, int penultimaLeitura) {
 		super();
@@ -69,11 +70,14 @@ public class Fatura {
 
 		if(pagamento.getValor() >= this.calculaValor()){
 			this.quitado = true;
+			
 			if(pagamento.getValor() > this.calculaValor()){
 				Reembolso reembolso = new Reembolso(pagamento.getValor() - this.calculaValor());
 				pagamento.setReembolso(reembolso);
 				System.out.printf("Reembolso feito de R$%.2f%n", pagamento.getReembolso().getValor());
 			}
 		}
+
+		this.pagamento = pagamento;
 	}
 }
