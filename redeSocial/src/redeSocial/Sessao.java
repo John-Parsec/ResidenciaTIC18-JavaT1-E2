@@ -18,7 +18,7 @@ public class Sessao {
         user.setSessao(sessao);
     }
     
-    void deslogar() {
+    public void deslogar() {
     	this.dataHoraFim = new Date();
     	user.setSessao(null);
     }
@@ -48,6 +48,13 @@ public class Sessao {
 			System.out.println(postagem.getPost());
 		}
 	}
+	
+    boolean solicitaAutenticacao() {
+    	if(ListaUsuarios.containsUser(user)) {
+    		return true;
+    	}
+    	return false;
+    }
 
 	public Usuario getUser() {
 		return user;

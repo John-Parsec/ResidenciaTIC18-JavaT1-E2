@@ -3,7 +3,7 @@ package redeSocial;
 import java.util.ArrayList;
 
 public class ListaUsuarios {
-    private ArrayList<Usuario> lista = new ArrayList<Usuario>();
+    private static ArrayList<Usuario> lista = new ArrayList<Usuario>();
 
     public void criarUsuario(Usuario user) {
         lista.add(user);
@@ -17,7 +17,7 @@ public class ListaUsuarios {
         return lista;
     }
 
-    public boolean containsUser(Usuario user){
+    public static boolean containsUser(Usuario user){
         return lista.contains(user);
     }
 }
